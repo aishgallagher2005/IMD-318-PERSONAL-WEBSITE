@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meet My Family - Slow Rock Theme</title>
+    <style>
+        /* [SLOW ROCK THEME: Base Aesthetics] */
+        :root {
+            --bg-deep: #121212;
+            --bg-rock: #1C1C1E;
+            --text-main: #f0eae0;
+            --accent-crimson: #a62b2b;
+            --accent-gold: #c9a66b;
+            --card-paper: #f2efe9; /* Vintage album paper background */
+            --card-text: #1a1a1a;
+            --font-main: 'Courier New', Courier, monospace;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 0),
+                              radial-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 0);
+            background-size: 24px 24px;
+            background-position: 0 0, 12px 12px;
+            font-family: var(--font-main);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* [HEADER SECTION] */
+        .header-bar {
+            width: 100%;
+            background-color: #000000;
+            color: #ffffff;
+            padding: 20px 0;
+            text-align: center;
+            border-bottom: 2px solid var(--accent-gold);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            z-index: 10;
+        }
+
+        .header-project-name {
+            font-size: 1.1em;
+            letter-spacing: 2px;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        /* [NAVIGATION BAR] */
+        .navigation-bar {
+            width: 100%;
+            background-color: var(--bg-rock);
+            padding: 15px 0;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            border-bottom: 3px solid #000000;
+        }
+
+        .nav-btn {
+            background: #ffffff;
+            color: var(--card-text);
+            padding: 10px 18px;
+            margin: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border: 3px solid #000000;
+            box-shadow: 4px 4px 0px #000000;
+            transition: all 0.1s ease-in-out;
+        }
+
+        /* Active styling for FAMILY page */
+        .nav-btn.active {
+            background-color: var(--accent-crimson);
+            color: #ffffff;
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px #000000;
+        }
+
+        .nav-btn:hover:not(.active) {
+            background-color: #e0e0e0;
+            transform: translate(1px, 1px);
+            box-shadow: 3px 3px 0px #000000;
+        }
+
+        /* [AUDIO PLAYER BAR] */
+        .audio-wrapper {
+            width: 100%;
+            background-color: var(--accent-crimson);
+            padding: 12px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-bottom: 3px solid #000000;
+            gap: 5px;
+        }
+
+        .audio-title {
+            margin: 0;
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            color: #ffffff;
+            text-transform: uppercase;
+        }
+
+        /* [MAIN CONTENT PANEL] */
+        .paper-sheet {
+            background-color: var(--card-paper);
+            color: var(--card-text);
+            border: 4px solid #000000;
+            padding: 40px;
+            margin: 40px auto;
+            max-width: 850px;
+            width: 90%;
+            box-shadow: 12px 12px 0px var(--accent-crimson);
+            box-sizing: border-box;
+        }
+
+        /* Scrapbook Header Box */
+        .intro-scrapbook {
+            text-align: center;
+            background-color: #ffffff;
+            border: 3px solid #000000;
+            padding: 25px;
+            box-shadow: 6px 6px 0px #000000;
+            margin-bottom: 35px;
+        }
+
+        .intro-scrapbook h2 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 24px;
+            color: var(--accent-crimson);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .intro-scrapbook p {
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        /* Family Row Layout */
+        .family-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            border-bottom: 2px dashed #a0a0a0;
+            padding-bottom: 25px;
+            gap: 25px;
+        }
+
+        .family-row:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .family-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid #000000;
+            object-fit: cover;
+            box-shadow: 4px 4px 0px var(--accent-crimson);
+            flex-shrink: 0;
+        }
+
+        .family-details {
+            flex-grow: 1;
+        }
+
+        .family-details h4 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+            color: #000000;
+            letter-spacing: 0.5px;
+        }
+
+        .family-details p {
+            margin: 0;
+            line-height: 1.7;
+            text-align: justify;
+            font-size: 0.95em;
+        }
+
+        /* Responsive Mobile Layout */
+        @media (max-width: 600px) {
+            .family-row {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            .family-details p {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-bar">
+        <h1 class="header-project-name">IMD318 Individual Project - Handcrafted by Hariz</h1>
+    </div>
+
+    <div class="navigation-bar">
+        <a href="index.html" class="nav-btn">Home</a>
+        <a href="biodata.html" class="nav-btn">Biodata</a>
+        <a href="experience.html" class="nav-btn">Experience</a>
+        <a href="education.html" class="nav-btn">Education</a>
+        <a href="family.html" class="nav-btn active">Family</a> 
+        <a href="gallery.html" class="nav-btn">Gallery</a>
+        <a href="contact.html" class="nav-btn">My Contact</a>
+    </div>
+
+    <div class="audio-wrapper">
+        <h3 class="audio-title">🎵 NOW PLAYING: Hold On Till May (Instrumental)</h3>
+        <audio controls autoplay loop>
+            <source src="audio/hold-on-till-may-karaoke-instrumental.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+
+    <div class="paper-sheet">
+        
+        <div class="intro-scrapbook">
+            <h2>🏡 Meet My Family</h2>
+            <p>"Family is where our story begins and love never ends." Here is a small tribute to my home circle.</p>
+        </div>
+
+        <!-- FATHER -->
+        <div class="family-row">
+            <img src="image/image1father.jpg" alt="Father" class="family-avatar">
+            <div class="family-details">
+                <h4>❤️ My Dearest Father </h4>
+                <p>My father is the anchor of peace in our home. A man of quiet strength, he is firm but rarely ever raises his voice, teaching me the value of patience through his actions rather than words. The moments I treasure most are when we sit down together at night after a long day, just sharing simple stories about life while enjoying the cool night breeze. His life advice always serves as a reliable compass for me to stay grounded.</p>
+            </div>
+        </div>
+
+        <!-- MOTHER -->
+        <div class="family-row">
+            <img src="image/image2 mother.jpg" alt="Mother" class="family-avatar">
+            <div class="family-details">
+                <h4>💖 My Beautiful Mother</h4>
+                <p>My mother is the true definition of a 'safe haven.' Her endless love and care always manage to ease all my cluttered thoughts after returning home from campus. Her cooking is what I miss the most whenever I am away, especially the simple comfort food she makes with absolute sincerity. Her smile is my greatest motivation, always making me believe that everything will eventually be alright.</p>
+            </div>
+        </div>
+
+        <!-- FIRST YOUNGER BROTHER (Adik Pertama) -->
+        <div class="family-row">
+            <img src="image/image3brother.jpg" alt="First Younger Brother" class="family-avatar">
+            <div class="family-details">
+                <h4>💪 My First Younger Brother</h4>
+                <p>As my first younger brother, he carries a great sense of responsibility and sets an amazing example for the rest of us. Even while keeping busy with his own growing path, he always finds time to check in on how I am doing at UiTM. Our childhood memories of sharing toys and old hobbies built a strong foundation for a brotherhood that remains unbreakable to this day.</p>
+            </div>
+        </div>
+
+        <!-- SECOND YOUNGER BROTHER (Adik Kedua) -->
+        <div class="family-row">
+            <img src="image/image4brother.jpg" alt="Second Younger Brother" class="family-avatar">
+            <div class="family-details">
+                <h4>✨ My Second Younger Brother</h4>
+                <p>My second younger brother has a incredibly laid-back and bright personality. He is often the mood-maker in our family, effortlessly making everyone laugh with his casual wit. Behind his funny nature, he is an excellent conversationalist when it comes to sharing common interests, especially music, anime, and creative designs. His presence keeps our family dynamic lively and never boring.</p>
+            </div>
+        </div>
+
+        <!-- YONGEST BROTHER (Adik Bongsu) -->
+        <div class="family-row">
+            <img src="image/image5brother.jpg" alt="Youngest Brother" class="family-avatar">
+            <div class="family-details">
+                <h4>🎀 My Youngest Brother</h4>
+                <p>Our youngest brother brings a youthful energy to the house that constantly reminds me of my own childhood days. Watching him grow up with his own unique interests and hobbies makes me realize just how fast time flies. Although we occasionally have our disagreements, we always silently support one another. Being an older brother to him teaches me the true meaning of responsibility and being a protective guide.</p>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

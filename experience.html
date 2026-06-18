@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Experience - History</title>
+    <style>
+        /* [SLOW ROCK THEME: Base Aesthetics] */
+        :root {
+            --bg-deep: #121212;
+            --bg-rock: #1C1C1E;
+            --text-main: #f0eae0;
+            --accent-crimson: #a62b2b;
+            --accent-gold: #c9a66b;
+            --card-paper: #f2efe9; /* Vintage record sleeve sleeve */
+            --card-text: #1a1a1a;
+            --font-main: 'Courier New', Courier, monospace;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 0),
+                              radial-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 0);
+            background-size: 24px 24px;
+            background-position: 0 0, 12px 12px;
+            font-family: var(--font-main);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* [HEADER SECTION] */
+        .header-bar {
+            width: 100%;
+            background-color: #000000;
+            color: #ffffff;
+            padding: 20px 0;
+            text-align: center;
+            border-bottom: 2px solid var(--accent-gold);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            z-index: 10;
+        }
+
+        .header-project-name {
+            font-size: 1.1em;
+            letter-spacing: 2px;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        /* [NAVIGATION BAR] */
+        .navigation-bar {
+            width: 100%;
+            background-color: var(--bg-rock);
+            padding: 15px 0;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            border-bottom: 3px solid #000000;
+        }
+
+        .nav-btn {
+            background: #ffffff;
+            color: var(--card-text);
+            padding: 10px 18px;
+            margin: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border: 3px solid #000000;
+            box-shadow: 4px 4px 0px #000000;
+            transition: all 0.1s ease-in-out;
+        }
+
+        /* Active styling untuk halaman EXPERIENCE */
+        .nav-btn.active {
+            background-color: var(--accent-crimson);
+            color: #ffffff;
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px #000000;
+        }
+
+        .nav-btn:hover:not(.active) {
+            background-color: #e0e0e0;
+            transform: translate(1px, 1px);
+            box-shadow: 3px 3px 0px #000000;
+        }
+
+        /* [MAIN CONTENT PANEL] */
+        .paper-sheet {
+            background-color: var(--card-paper);
+            color: var(--card-text);
+            border: 4px solid #000000;
+            padding: 40px;
+            margin: 40px auto;
+            max-width: 850px;
+            width: 90%;
+            box-shadow: 12px 12px 0px var(--accent-crimson);
+            box-sizing: border-box;
+        }
+
+        /* Badge Atas Setempat (My Steps Taken) */
+        .title-badge {
+            border: 3px solid #000000;
+            text-align: center;
+            padding: 20px;
+            background: var(--accent-crimson);
+            color: #ffffff;
+            box-shadow: 6px 6px 0px #000000;
+            margin-bottom: 35px;
+        }
+
+        .title-badge h2 {
+            margin: 0;
+            font-size: 24px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .title-badge p {
+            margin: 8px 0 0 0;
+            font-size: 14px;
+            font-style: italic;
+            color: #f0eae0;
+        }
+
+        /* Kad Aktiviti Rock Flyer Style */
+        .experience-box {
+            background: #ffffff;
+            border: 3px solid #000000;
+            padding: 25px;
+            margin: 30px 0;
+            box-shadow: 6px 6px 0px #000000;
+            display: flex;
+            gap: 25px;
+            align-items: flex-start;
+        }
+
+        .exp-img {
+            width: 100%;
+            max-width: 220px;
+            height: 160px;
+            object-fit: cover;
+            border: 3px solid #000000;
+            box-shadow: 4px 4px 0px var(--accent-crimson);
+            flex-shrink: 0;
+        }
+
+        .exp-details {
+            flex-grow: 1;
+        }
+
+        .experience-box h4 {
+            margin-top: 0;
+            margin-bottom: 12px;
+            font-size: 1.1em;
+            color: var(--accent-crimson);
+            letter-spacing: 0.5px;
+        }
+
+        .experience-box p {
+            margin: 0;
+            line-height: 1.7;
+            text-align: justify;
+            font-size: 0.95em;
+        }
+
+        /* Responsif untuk Skrin Kecil/Telefon */
+        @media (max-width: 768px) {
+            .experience-box {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: 20px;
+            }
+            .exp-img {
+                max-width: 100%;
+                height: auto;
+            }
+            .experience-box p {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- [HEADER SECTION] -->
+    <div class="header-bar">
+        <h1 class="header-project-name">IMD318 Individual Project - Handcrafted by Hariz</h1>
+    </div>
+
+    <!-- [NAVIGATION BAR] -->
+    <div class="navigation-bar">
+        <a href="index.html" class="nav-btn">Home</a>
+        <a href="biodata.html" class="nav-btn">Biodata</a>
+        <a href="experience.html" class="nav-btn active">Experience</a> <!-- Halaman Aktif -->
+        <a href="education.html" class="nav-btn">Education</a>
+        <a href="family.html" class="nav-btn">Family</a>
+        <a href="gallery.html" class="nav-btn">Gallery</a>
+        <a href="contact.html" class="nav-btn">My Contact</a>
+    </div>
+
+    <!-- [MAIN EXP CONTAINER] -->
+    <div class="paper-sheet">
+        
+        <!-- Header Banner Dalam Kad -->
+        <div class="title-badge">
+            <h2>🎸 MY STEPS TAKEN</h2>
+            <p>"The activities that I had joined and done throughout my life"</p>
+        </div>
+
+        
+
+        <!-- Kad Aktiviti 1 -->
+        <div class="experience-box">
+            <img src="image/image10.jpg" alt="Activity 1" class="exp-img">
+            <div class="exp-details">
+                <h4>[ 01. CAMPUS INVOLVEMENT EVENT ]</h4>
+                <p>Participating in our recent campus cultural night was a massive step out of my comfort zone. Working behind the scenes as part of the technical team, I was responsible for coordinating the stage cues and monitoring the ambient background music. This event taught me how to stay completely level-headed under immense pressure, and collaborating with different creative minds showed me the beautiful rhythm of teamwork.</p>
+            </div>
+        </div>
+
+        <!-- Kad Aktiviti 2 -->
+        <div class="experience-box">
+            <img src="image/image11.jpg" alt="Activity 2" class="exp-img">
+            <div class="exp-details">
+                <h4>[ 02. HIGH SCHOOL CLUB CAMPAIGN ]</h4>
+                <p>During my secondary school years, I took an active role in our school's anti-vandalism and clean-campus initiative. My primary duty was designing eye-catching posters that combined meaningful messages with retro, artistic illustrations to better capture my peers' interest. It was incredibly fulfilling to realize that simple creative visual arts could heavily impact a community and inspire people to respect their shared space.</p>
+            </div>
+        </div>
+
+        <!-- Kad Aktiviti 3 -->
+        <div class="experience-box">
+            <img src="image/image12.jpg" alt="Activity 3" class="exp-img">
+            <div class="exp-details">
+                <h4>[ 03. VOLUNTEER WORK DI MALAYSIA ]</h4>
+                <p>Joining a local community clean-up drive during the festive holidays remains one of my most grounding life experiences. My task was helping to clear out littered community parks and sorting recyclable materials alongside local residents. Spending the day working quietly under the sun taught me true humility, making me deeply appreciate the unspoken bond built when people come together to care for our shared environment.</p>
+            </div>
+        </div>
+
+        <!-- Kad Aktiviti 4 -->
+        <div class="experience-box">
+            <img src="image/image13.jpg" alt="Activity 4" class="exp-img">
+            <div class="exp-details">
+                <h4>[ 04. CREATIVE DESIGN WORKSHOP ]</h4>
+                <p>Attending an interactive digital media workshop opened my eyes to how web layouts and vintage aesthetics can beautifully merge. I spent the session practicing minimal typography placement and choosing color palettes that tell a unique story. The invaluable skills I picked up there became a major source of inspiration for setting up my current handcrafted projects, giving me the confidence to express my inner personality online.</p>
+            </div>
+        </div>
+        
+    </div>
+
+</body>
+</html>

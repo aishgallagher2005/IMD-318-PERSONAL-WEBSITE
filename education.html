@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Education Journey - Slow Rock Theme</title>
+    <style>
+        /* [SLOW ROCK THEME: Base Aesthetics] */
+        :root {
+            --bg-deep: #121212;
+            --bg-rock: #1C1C1E;
+            --text-main: #f0eae0;
+            --accent-crimson: #a62b2b;
+            --accent-gold: #c9a66b;
+            --card-paper: #f2efe9; /* Warna kertas album vintaj */
+            --card-text: #1a1a1a;
+            --font-main: 'Courier New', Courier, monospace;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 0),
+                              radial-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 0);
+            background-size: 24px 24px;
+            background-position: 0 0, 12px 12px;
+            font-family: var(--font-main);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* [HEADER SECTION] */
+        .header-bar {
+            width: 100%;
+            background-color: #000000;
+            color: #ffffff;
+            padding: 20px 0;
+            text-align: center;
+            border-bottom: 2px solid var(--accent-gold);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            z-index: 10;
+        }
+
+        .header-project-name {
+            font-size: 1.1em;
+            letter-spacing: 2px;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        /* [NAVIGATION BAR] */
+        .navigation-bar {
+            width: 100%;
+            background-color: var(--bg-rock);
+            padding: 15px 0;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            border-bottom: 3px solid #000000;
+        }
+
+        .nav-btn {
+            background: #ffffff;
+            color: var(--card-text);
+            padding: 10px 18px;
+            margin: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border: 3px solid #000000;
+            box-shadow: 4px 4px 0px #000000;
+            transition: all 0.1s ease-in-out;
+        }
+
+        /* Active styling khusus untuk halaman EDUCATION */
+        .nav-btn.active {
+            background-color: var(--accent-crimson);
+            color: #ffffff;
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px #000000;
+        }
+
+        .nav-btn:hover:not(.active) {
+            background-color: #e0e0e0;
+            transform: translate(1px, 1px);
+            box-shadow: 3px 3px 0px #000000;
+        }
+
+        /* [AUDIO PLAYER BAR - DECORATED] */
+        .audio-wrapper {
+            width: 100%;
+            background-color: var(--accent-crimson);
+            background-image: linear-gradient(45deg, rgba(0, 0, 0, 0.15) 25%, transparent 25%, transparent 50%, rgba(0, 0, 0, 0.15) 50%, rgba(0, 0, 0, 0.15) 75%, transparent 75%, transparent);
+            background-size: 40px 40px; /* Hiasan tekstur garisan serong ala kaset vintaj */
+            padding: 15px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-bottom: 4px solid #000000;
+            gap: 8px;
+            box-shadow: inset 0px -5px 0px rgba(0,0,0,0.2);
+        }
+
+        .audio-title {
+            margin: 0;
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: #ffffff;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 0px #000000; /* Menegaskan elemen tipografi rock */
+        }
+
+        .audio-wrapper audio {
+            border: 3px solid #000000;
+            border-radius: 30px;
+            box-shadow: 4px 4px 0px #000000;
+            outline: none;
+            max-width: 320px;
+            width: 90%;
+        }
+
+        /* [MAIN CONTENT PANEL] */
+        .paper-sheet {
+            background-color: var(--card-paper);
+            color: var(--card-text);
+            border: 4px solid #000000;
+            padding: 40px;
+            margin: 40px auto;
+            max-width: 850px;
+            width: 90%;
+            box-shadow: 12px 12px 0px var(--accent-crimson);
+            box-sizing: border-box;
+        }
+
+        .page-title {
+            text-align: center;
+            font-size: 24px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-top: 0;
+            margin-bottom: 25px;
+            color: #000000;
+        }
+
+        /* [JUMP TO TOPIC PANEL] Style Rock Scrapbook */
+        .jump-box {
+            text-align: center; 
+            background: #ffffff; 
+            padding: 20px; 
+            border: 3px solid #000000;
+            box-shadow: 6px 6px 0px #000000;
+            margin-bottom: 40px;
+        }
+
+        .jump-box p {
+            margin-top: 0; 
+            margin-bottom: 15px;
+            font-size: 14px; 
+            font-weight: bold;
+            letter-spacing: 1.5px;
+            color: var(--accent-crimson);
+        }
+
+        .jump-btn-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .edu-jump-btn {
+            display: inline-block;
+            text-decoration: none;
+            color: #000000;
+            background-color: #e5b0cc; /* Mengekalkan ton warna pink ikonik dari lakaran asal */
+            padding: 8px 16px;
+            font-size: 12px;
+            font-weight: bold;
+            border: 2px solid #000000;
+            margin: 4px;
+            box-shadow: 3px 3px 0px #000000;
+            transition: all 0.1s ease-in-out;
+        }
+
+        .edu-jump-btn:hover {
+            transform: translate(1px, 1px);
+            box-shadow: 2px 2px 0px #000000;
+            background-color: #d896bb;
+        }
+
+        /* [EDUCATION SECTIONS] */
+        .edu-section {
+            border: 3px dashed #000000; /* Garisan putus-putus tebal ala grunge flyer */
+            padding: 25px;
+            margin-bottom: 30px;
+            background-color: #ffffff;
+            box-shadow: 6px 6px 0px var(--accent-crimson);
+        }
+
+        .edu-section h3 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 18px;
+            color: #000000;
+            letter-spacing: 1px;
+        }
+
+        .edu-section p {
+            font-size: 15px;
+            line-height: 1.8;
+            color: var(--card-text);
+            text-align: justify;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- [HEADER SECTION] -->
+    <div class="header-bar">
+        <h1 class="header-project-name">IMD318 Individual Project - Handcrafted by Hariz</h1>
+    </div>
+
+    <!-- [NAVIGATION BAR] -->
+    <div class="navigation-bar">
+        <a href="index.html" class="nav-btn">Home</a>
+        <a href="biodata.html" class="nav-btn">Biodata</a>
+        <a href="experience.html" class="nav-btn">Experience</a>
+        <a href="education.html" class="nav-btn active">Education</a> <!-- Active Page -->
+        <a href="family.html" class="nav-btn">Family</a>
+        <a href="gallery.html" class="nav-btn">Gallery</a>
+        <a href="contact.html" class="nav-btn">My Contact</a>
+    </div>
+
+    <!-- [AUDIO PLAYER BAR - ADDED & DECORATED] -->
+    <div class="audio-wrapper">
+        <h3 class="audio-title">🎵 NOW PLAYING: Another You (Instrumental)</h3>
+        <audio controls autoplay loop>
+            <source src="audio/Another You.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+
+    <!-- [MAIN CONTENT SECTION] -->
+    <div class="paper-sheet">
+        <h2 class="page-title">🎓 My Education Journey</h2>
+        
+        <!-- Jump To Topic Box -->
+        <div class="jump-box">
+            <p>JUMP TO TOPIC:</p>
+            <div class="jump-btn-container">
+                <a href="#kindergarten" class="edu-jump-btn">KINDERGARTEN</a>
+                <a href="#primary" class="edu-jump-btn">PRIMARY SCHOOL</a>
+                <a href="#secondary" class="edu-jump-btn">SECONDARY SCHOOL</a>
+                <a href="#diploma" class="edu-jump-btn">DIPLOMA</a>
+            </div>
+        </div>
+
+        <!-- Card 01: Kindergarten -->
+        <div id="kindergarten" class="edu-section">
+            <h3>[ 01. KINDERGARTEN ]</h3>
+            <p>My kindergarten days were my very first step into the social world. Even back then, I preferred spending my time peacefully coloring in the corner of the classroom rather than playing rough outside. One of my funniest and most unforgettable memories is constantly falling asleep at my desk during afternoon reading sessions because the classroom atmosphere was just so dim and comforting.</p>
+        </div>
+
+        <!-- Card 02: Primary School -->
+        <div id="primary" class="edu-section">
+            <h3>[ 02. PRIMARY SCHOOL ]</h3>
+            <p>As I moved on to primary school, my passion for creative subjects began to grow, especially in Art Education. I was always excited whenever drawing assignments were given. Amidst the busy school routine, finding a quiet moment in the peaceful library to read storybooks served as my ultimate 'escape zone' from the loud crowd.</p>
+        </div>
+
+        <!-- Card 03: Secondary School -->
+        <div id="secondary" class="edu-section">
+            <h3>[ 03. SECONDARY SCHOOL ]</h3>
+            <p>In high school, my personality as an INFP became much more apparent. The most meaningful experience during this phase was curating my own music playlists—mostly consisting of emo and slow rock tracks—to keep me company during late-night study sessions for the SPM examination. Even while focusing on my studies, I made sure my lifestyle remained steady, slow-paced, and stress-free.</p>
+        </div>
+
+        <!-- Card 04: Diploma -->
+        <div id="diploma" class="edu-section">
+            <h3>[ 04. DIPLOMA IN UITM ]</h3>
+            <p>Now, life as a Diploma student at UiTM has given me a wider space to explore the digital landscape. Balancing my IMD318 course work with campus life is teaching me how to be truly independent. Despite the hectic schedule of lectures and assignments, I always find time for a quick 'healing' session—reading a book, watching anime, or vibing to my favorite tracks to keep my life beautifully balanced.</p>
+        </div>
+    </div>
+
+</body>
+</html>

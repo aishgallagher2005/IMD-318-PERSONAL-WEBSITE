@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Gallery - Slow Rock Theme</title>
+    <style>
+        /* [SLOW ROCK THEME: Base Aesthetics] */
+        :root {
+            --bg-deep: #121212;
+            --bg-rock: #1C1C1E;
+            --text-main: #f0eae0;
+            --accent-crimson: #a62b2b;
+            --accent-gold: #c9a66b;
+            --card-paper: #f2efe9; /* Latar belakang helai kertas vintaj */
+            --card-text: #1a1a1a;
+            --font-main: 'Courier New', Courier, monospace;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 0),
+                              radial-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 0);
+            background-size: 24px 24px;
+            background-position: 0 0, 12px 12px;
+            font-family: var(--font-main);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* [HEADER SECTION] */
+        .header-bar {
+            width: 100%;
+            background-color: #000000;
+            color: #ffffff;
+            padding: 20px 0;
+            text-align: center;
+            border-bottom: 2px solid var(--accent-gold);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            z-index: 10;
+        }
+
+        .header-project-name {
+            font-size: 1.1em;
+            letter-spacing: 2px;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        /* [NAVIGATION BAR] */
+        .navigation-bar {
+            width: 100%;
+            background-color: var(--bg-rock);
+            padding: 15px 0;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            border-bottom: 3px solid #000000;
+        }
+
+        .nav-btn {
+            background: #ffffff;
+            color: var(--card-text);
+            padding: 10px 18px;
+            margin: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border: 3px solid #000000;
+            box-shadow: 4px 4px 0px #000000;
+            transition: all 0.1s ease-in-out;
+        }
+
+        /* Active styling khusus untuk halaman GALLERY */
+        .nav-btn.active {
+            background-color: var(--accent-crimson);
+            color: #ffffff;
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px #000000;
+        }
+
+        .nav-btn:hover:not(.active) {
+            background-color: #e0e0e0;
+            transform: translate(1px, 1px);
+            box-shadow: 3px 3px 0px #000000;
+        }
+
+        /* [MAIN CONTENT PANEL] */
+        .paper-sheet {
+            background-color: var(--card-paper);
+            color: var(--card-text);
+            border: 4px solid #000000;
+            padding: 40px;
+            margin: 40px auto;
+            max-width: 950px;
+            width: 90%;
+            box-shadow: 12px 12px 0px var(--accent-crimson);
+            box-sizing: border-box;
+            border-radius: 0px; /* Ditukar ke rupa bersegi lurus ala vintaj */
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 45px;
+            font-size: 32px;
+            letter-spacing: 4px;
+            color: #000000;
+            text-shadow: 3px 3px 0px var(--accent-crimson);
+            text-transform: uppercase;
+            font-family: var(--font-main);
+            font-weight: bold;
+        }
+
+        /* Kotak Bingkai Sempadan Galeri (Moshpit Frame) */
+        .gallery-section-box {
+            position: relative;
+            border: 3px dashed #000000;
+            background-color: #ffffff;
+            padding: 45px 20px 25px 20px;
+            margin-bottom: 50px;
+            margin-top: 30px;
+            box-shadow: 6px 6px 0px #000000;
+        }
+
+        /* Label Kepala Kod Tiket Konsert */
+        .washi-tape-title {
+            position: absolute;
+            top: -18px;
+            left: 20px;
+            background: linear-gradient(90deg, var(--accent-crimson) 0%, #731d1d 100%);
+            color: #ffffff;
+            padding: 8px 20px;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            box-shadow: 3px 3px 0px #000;
+            text-transform: uppercase;
+            border: 2px solid #000000;
+        }
+
+        /* [GRID LAYOUT SYSTEM] */
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 25px;
+            justify-items: center;
+            margin-top: 15px;
+        }
+
+        /* [POLAROID / VINYL JACKET CARD] */
+        .polaroid {
+            background-color: var(--card-paper);
+            padding: 12px 12px 20px 12px;
+            border: 3px solid #000000;
+            box-shadow: 5px 5px 0px #000000;
+            text-align: center;
+            width: 200px;
+            transition: all 0.2s ease-in-out;
+        }
+
+        /* Kesan kecondongan seni poster vintaj */
+        .grid-layout .polaroid:nth-child(odd) {
+            transform: rotate(-3deg);
+        }
+        .grid-layout .polaroid:nth-child(even) {
+            transform: rotate(3deg);
+        }
+
+        .polaroid img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border: 2px solid #000000;
+        }
+
+        /* Teks Kapsyen Jejak Lagu / Tracklist */
+        .polaroid-caption {
+            font-size: 12px;
+            font-weight: bold;
+            color: var(--accent-crimson);
+            margin-top: 14px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Kesan Hover: Hentakan Audio Distorsi (Headbang Hover Effect) */
+        .polaroid:hover {
+            transform: rotate(0deg) scale(1.06) !important;
+            background-color: #ffffff;
+            box-shadow: 8px 8px 0px var(--accent-gold);
+            z-index: 10;
+        }
+
+        .footnote {
+            text-align: center; 
+            margin-top: 35px; 
+            font-size: 12px; 
+            color: #555555; 
+            letter-spacing: 1px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- [HEADER SECTION] -->
+    <div class="header-bar">
+        <h1 class="header-project-name">BACKSTAGE PASS // INDIVIDUAL ROCK PROJECT // TRACK.LIST_BY_HARIZ</h1>
+    </div>
+
+    <!-- [NAVIGATION BAR] -->
+    <div class="navigation-bar">
+        <a href="index.html" class="nav-btn">HOME</a>
+        <a href="biodata.html" class="nav-btn">BIODATA</a>
+        <a href="experience.html" class="nav-btn">EXPERIENCE</a>
+        <a href="education.html" class="nav-btn">EDUCATION</a>
+        <a href="family.html" class="nav-btn">FAMILY</a>
+        <a href="gallery.html" class="nav-btn active">GALLERY</a> <!-- Halaman Aktif -->
+        <a href="contact.html" class="nav-btn">MY CONTACT</a>
+    </div>
+
+    <!-- [MAIN GALLERY PANEL] -->
+    <div class="paper-sheet">
+        
+        <h2 class="page-title">🎸 GALLERY</h2>
+
+        <!-- Seksyen 1: Family Lineup -->
+        <div class="gallery-section-box">
+            <div class="washi-tape-title">⚡ MY_FAMILY_LINEUP.03</div>
+            <div class="grid-layout">
+                <div class="polaroid">
+                    <img src="image/image1father.jpg" alt="Father">
+                    <div class="polaroid-caption">🔥 FATHER</div>
+                </div>
+                <div class="polaroid">
+                    <img src="image/image2 mother.jpg" alt="Mother">
+                    <div class="polaroid-caption">🔥 MOTHER</div>
+                </div>
+                <div class="polaroid">
+                    <img src="image/image3brother.jpg" alt="YoungerBrother">
+                    <div class="polaroid-caption">🔥 ELDEST_BROTHER</div>
+                </div>
+                <div class="polaroid">
+                    <img src="image/image4brother.jpg" alt="SecondBrother">
+                    <div class="polaroid-caption">🔥 4TH_ELDEST</div>
+                </div>
+                <div class="polaroid">
+                    <img src="image/image5brother.jpg" alt="Little Brother">
+                    <div class="polaroid-caption">🔥 LITTLE_BROTHER</div>
+                </div>
+                <div class="polaroid">
+                    <img src="image/image9family.jpg" alt="Family Memory">
+                    <div class="polaroid-caption">🔥 FAMILY_MEMORIES</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Seksyen 2: Aesthetic Vibes -->
+        <div class="gallery-section-box">
+            <div class="washi-tape-title">⚡ Random Pics</div>
+            <div class="grid-layout">
+                <div class="polaroid"><img src="image/image6aish.jpg" alt="1"><div class="polaroid-caption">💀 LIKE_01</div></div>
+                <div class="polaroid"><img src="image/image7rempit.jpg" alt="2"><div class="polaroid-caption">💀 LIKE_02</div></div>
+                <div class="polaroid"><img src="image/image8zilong.jpg" alt="3"><div class="polaroid-caption">💀 LIKE_03</div></div>
+                <
+        </div>
+
+        <div class="footnote">
+            [ ATTENTION: HOVER OVER TRACKS TO UNLEASH MAXIMUM AUDIO-VISUAL DISTORTION ]
+        </div>
+
+    </div>
+
+</body>
+</html>
